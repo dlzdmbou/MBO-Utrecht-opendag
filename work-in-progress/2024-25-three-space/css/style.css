@@ -1,0 +1,447 @@
+/*
+    CSS Variables:
+*/
+:root {
+    --exampleVariable: #F00;
+}
+
+/* sloppy reset all the thingz */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 100vh;
+
+    font-size: 16px;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+
+header {
+    width: 100%;
+    background-color: #333;
+    position: fixed;
+    z-index: 1000;
+    box-shadow: 0px 0px 5px 5px rgba(0, 0, 0, 0.5);
+}
+
+img.logo {
+    margin-bottom: 1em;
+    max-height: 128px;
+    min-height: 10%;
+}
+
+nav {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+nav img.logo {
+    max-height: 48px;
+    margin: auto 0;
+}
+
+nav ul {
+    display: flex;
+    justify-content: space-between;
+
+    li {
+        list-style: none;
+        display: flex;
+        align-items: center;
+    }
+
+    a {
+        display: block;
+        color: #DDD;
+        font-weight: bold;
+        text-decoration: none;
+        padding: 0.5em 1em;
+
+        &:hover,
+        &.active {
+            color: #FFF;
+            background-color: #222;
+        }
+
+        &:hover {
+            color: #0FF;
+        }
+    }
+}
+
+main {
+    position: relative;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    padding: 9em 1em;
+    background-color: #111;
+}
+
+main.banner:before {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 0;
+    opacity: 0.5;
+    background-image: url(../img/ai-banner-1.png);
+    background-repeat: no-repeat;
+    background-position: 50% 0%;
+    background-size: contain;
+}
+
+h1 {
+    text-align: center;
+    margin: 2em 0;
+}
+
+hr {
+    border: 2px solid #CCC;
+    margin: 1em 0;
+}
+
+p {
+    margin: 1em 0;
+}
+
+a.steampowered {
+    display: inline-block;
+    border-radius: 0 1em 0 1em;
+    background-color: #171a21;
+    color: #FFF;
+    text-decoration: none;
+    font-weight: bold;
+    padding: 1.5em 2em 1.5em 1em;
+    transition: all 0.2s linear;
+    
+    &:hover {
+        border-radius: 1em 0 1em 1em;
+        background-color: #292e3a;
+    }
+
+    &:before {
+        content: '.';
+        color: transparent;
+        display: inline-block;
+        background-image: url(../img/games/steam_icon.svg);
+        background-size: contain;
+        background-position: center center;
+        background-repeat: no-repeat;
+        width: 3em;
+        line-height: 2em;
+    }
+}
+
+footer {
+    width: 100%;
+    background-color: #010101;
+    color: #666;
+    padding: 2em;
+}
+
+.card {
+    background-color: #FFF;
+    border-radius: 1em;
+    transition: all 0.2s linear;
+    z-index: 1;
+    box-shadow: 0 0 50px 5px rgba(0, 0, 0, 0.5);
+    border: 2px solid rgba(255, 255, 255, 0.25);
+
+    h2 {
+        text-align: center;
+        padding: 0.5em 1em;
+    }
+
+    img {
+        min-width: 100%;
+        max-width: 100%;
+    }
+
+    .content {
+        padding: 1em;
+    }
+
+    p {
+        margin: 0.1em 0;
+    }
+
+    p:last-child {
+        color: #CCC;
+        font-size: 0.8em;
+    }
+}
+
+.card:hover {
+    z-index: 2;
+    translate: .1em 0;
+    rotate: -1deg;
+    scale: 1.15;
+}
+
+/* helpers */
+.fluid-image {
+    min-width: 100%;
+    max-width: 100%;
+}
+.img-list {
+    padding-top: 1em;
+    padding-bottom: 1.5em;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(128px, 1fr));
+    gap: 15px; /* Adjusts the spacing between cards */
+
+    li {
+        list-style: none;
+        img {
+            /*border-radius: 2em 0;*/
+            min-width: 10%;
+            max-width: 100%;
+            opacity: 0.66;
+            transition: all 0.2s linear;
+        }
+        img:hover {
+            /*border-radius: 0 2em;
+            scale: 1.1;*/
+            opacity: 1;
+        }
+    }
+}
+.white-text {
+    color: #FFF;
+}
+
+.align-self-center {
+    align-self: center;
+}
+
+.center-text {
+    text-align: center;
+}
+
+.white-background {
+    background-color: #FFF;
+    color: #333;
+    border-radius: 1em;
+}
+
+.hidden {
+    opacity: 0;
+    height: 0;
+    pointer-events: none;
+}
+
+/* THREE.js render space */
+.renderContainer {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-self: center;
+    margin-bottom: 5em;
+}
+
+#hud {
+    position: absolute;
+    display: flex;
+    justify-content: space-around;
+    top: 0;
+    left: 0;
+    right: 0;
+    color: #FF0;
+    padding: 1em;
+    pointer-events: none;
+
+    div {
+        border-radius: 0.2em;
+        background-color: rgba(0, 0, 0, 0.5);
+        padding: 0.2em 0.5em;
+    }
+
+    span {
+        margin-left: .5em;
+    }
+}
+
+#gameInterface {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    color: #FF0;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-content: center;
+
+    transition: opacity .5s linear;
+
+    input,
+    button {
+        text-align: center;
+        margin: 1em;
+        padding: 0.5em 1em;
+        font-size: 1em;
+        border: 2px dotted rgba(255, 255, 0, 0.349);
+        background-color: #333;
+        color: #FF0;
+        border-radius: 0.25em;
+
+        &:hover {
+            border: 2px dotted #FF0;
+        }
+    }
+
+    input:focus {
+        outline: #0FF solid 2px;
+    }
+
+    button {
+        display: inline-block;
+        cursor: pointer;
+        border: 2px solid rgba(255, 255, 0, 0.349);
+
+        &:hover {
+            border: 2px solid #FF0;
+        }
+    }
+
+    a {
+        align-self: center;
+        color: #FF0;
+        text-decoration: none;
+
+        &:hover {
+            text-decoration: underline;
+        }
+    }
+
+    hr {
+        border: 1px dashed #FF0;
+        margin: 1em 0;
+    }
+}
+
+#gameInterface.hidden {
+    height: auto;
+}
+
+@media (max-width: 980px) {
+    #gameInterface {
+        font-size: 0.8em;
+    }
+}
+
+#gameStart,
+#gameEnd {
+    display: flex;
+    flex-direction: column;
+    align-self: center;
+    transition: opacity .5s linear;
+    border: 2px dotted rgba(255, 255, 0, 0.349);
+    padding: 1.5em 3em;
+}
+
+@media (max-width: 980px) {
+
+    #gameStart,
+    #gameEnd {
+        padding: 0.5em 1.5em;
+    }
+}
+
+#ThreeJS {
+    position: relative;
+    image-rendering: pixelated;
+
+    canvas {
+        aspect-ratio: 5/3;
+        cursor: crosshair;
+        width: 1280px !important;
+        height: 768px !important;
+    }
+
+    @media (max-width: 720px) {
+        canvas {
+            width: 540px !important;
+            height: auto !important;
+        }
+    }
+
+    @media (min-width: 720px) {
+        canvas {
+            width: 720px !important;
+            height: auto !important;
+        }
+    }
+
+    @media (min-width: 980px) {
+        canvas {
+            width: 980px !important;
+            height: auto !important;
+        }
+    }
+
+    @media (min-width: 1400px) {
+        canvas {
+            width: 1280px !important;
+        }
+    }
+
+}
+
+
+
+/* animations */
+
+.shake {
+    animation: .5s linear 1s 1 forwards shaker;
+}
+
+@keyframes shaker {
+    0% {
+        opacity: 1;
+        font-size: 1em;
+    }
+
+    30% {
+        opacity: 0;
+        font-size: 1.5em;
+    }
+
+    40% {
+        opacity: 1;
+        font-size: 1em;
+    }
+
+    50% {
+        opacity: 0;
+        font-size: 1.5em;
+    }
+
+    60% {
+        opacity: 1;
+        font-size: 1em;
+    }
+
+    70% {
+        opacity: 0;
+        font-size: 1.5em;
+    }
+
+    100% {
+        opacity: 1;
+        font-size: 1em;
+    }
+}

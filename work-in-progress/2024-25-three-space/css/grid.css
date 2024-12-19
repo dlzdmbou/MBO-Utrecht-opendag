@@ -1,0 +1,51 @@
+/* General container styling */
+.container {
+    width: 100%; /* Adjust as needed */
+    max-width: 1280px;
+    margin: 2em auto;
+    padding: 0 15px;
+    z-index: 1;
+}
+
+.container.d-grid-flex {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 15px; /* Adjusts the spacing between cards */
+}
+
+/* Row styling for flex container */
+.row {
+    display: flex;
+    flex-wrap: wrap;
+    margin: 0 -15px;
+}
+
+/* General column styling */
+[class^="col-"] {
+    /*border: 1px solid #F00;*/
+    padding: 15px; /* Spacing around columns */
+    flex: 1 1 0; /* Default flexible behavior */
+    max-width: 100%; /* Ensure no overflow */
+    box-sizing: border-box; /* Include padding in width calculation */
+}
+
+/* Responsive column variations */
+.col-1 { flex: 0 0 8.33%; max-width: 8.33%; }
+.col-2 { flex: 0 0 16.66%; max-width: 16.66%; }
+.col-3 { flex: 0 0 25%; max-width: 25%; }
+.col-4 { flex: 0 0 33.33%; max-width: 33.33%; }
+.col-5 { flex: 0 0 41.66%; max-width: 41.66%; }
+.col-6 { flex: 0 0 50%; max-width: 50%; }
+.col-7 { flex: 0 0 58.33%; max-width: 58.33%; }
+.col-8 { flex: 0 0 66.66%; max-width: 66.66%; }
+.col-9 { flex: 0 0 75%; max-width: 75%; }
+.col-10 { flex: 0 0 83.33%; max-width: 83.33%; }
+.col-11 { flex: 0 0 91.66%; max-width: 91.66%; }
+.col-12 { flex: 0 0 100%; max-width: 100%; }
+
+/* Small screen adjustments (e.g., <768px) */
+@media (max-width: 980px) {
+    [class^="col-"] {
+        flex-basis: 100%;
+    }
+}

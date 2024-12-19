@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=\, initial-scale=1.0">
+    <title>6s Shooter</title>
+    <link rel="stylesheet" href="./css/grid.css">
+    <link rel="stylesheet" href="./css/style.css">    
+</head>
+
+<body>
+
+    <header>
+        <nav>
+            <ul>
+                <li>
+                    <a href="index.html" class="active">
+                        <img src="img/6s-logo.webp" class="logo" alt="6-sec-shooter" />
+                    </a>
+                </li>
+                <li>
+                    <ul>
+                        <li><a href="leaderboard.html">Leaderboard</a></li>
+                        <li><a href="about.html">About</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </nav>
+    </header>
+
+    <main class="banner">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12 col-sm-12 center-text">
+                    <img class="logo" src="img/6s-logo.webp"/>
+                </div>
+            </div>
+        </div>
+        
+        <div class="renderContainer">            
+            <div id="ThreeJS">🔥</div>
+
+            <div id="hud">
+                <div>⏱️<span id="timer">0</span></div>
+                <div>👎<span id="accuracy">0</span></div>
+                <div>👌 <span id="score">0</span></div>
+                <div>✨<span id="totalScore">0</span></div>
+            </div>
+
+            <div id="gameInterface">
+                <div id="gameEnd" class="hidden">
+                    <h2>☠️ Game over!</h2>
+                    <div id="gameOverText">Game over</div>
+                    <button id="btnEnd">Close</button>
+                    <a href="leaderboard.html" title="check the leaderboard">Leaderboards</a>
+                </div>
+                <div id="gameStart">
+                    <label for="playerName">😀 Enter your name:</label>
+                    <input type="text" id="playerName" placeholder="???" maxlength="32" title="Enter your name" />
+                    <hr/>
+                    <button type="submit" id="btnStart" title="Start the game">Start game</button>
+                    <a href="leaderboard.html" title="check the leaderboard">Leaderboards</a>
+                </div>                
+            </div>
+        </div>
+
+        <div class="container white-background">
+            <div class="row">
+                <div class="col-md-4 col-sm-12">
+                    <h3>❔ How to play:</h3>
+                    <p>Once the game starts you have 6 seconds. A ⏱️ timer will start running, but...</p>
+                    <p>Every shot fired will delay the timer for a little bit. If you 👌 hit a target, the timer interval will speed up. If you 👎 miss a target, the interval will slow down.</p>
+                </div>
+                <div class="col-md-4 col-sm-12">
+                    <h3>✨ Score system:</h3>
+                    <p>Your 🤺 accuracy will be based on your 👌 hits &amp; 👎 misses. Your ✨ score is based on your hits, and is multiplied by your accuracy.</p>
+                    <p>Find the right balance between speed and accuracy to discover the perfect interval delays.</p>
+                </div>
+                <div class="col-md-4 col-sm-12">
+                    <h3>💯 Leaderboards</h3>
+                    <p>Six-second-shooter is a highly competitive game and features a detailed leaderboard to follow the pros in the scene of aimtrainers.</p>
+                </div>
+            </div>
+        </div>
+        
+    </main>
+
+    <footer>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4 col-sm-12">
+                    <h4>Made for</h4>
+                    <a href="https://www.mboutrecht.nl/" target="_blank">
+                        <img src="./img/logo-new@2x-bw.png" alt="MBO Utrecht logo" />
+                    </a>
+                </div>
+                <div class="col-md-4 col-sm-12">
+                    <h4>Made with</h4>
+                    <ul>
+                        <li>
+                            <a href="https://developer.mozilla.org/en-US/docs/Web/HTML" title="Mozilla developer network: HTML">
+                                HTML
+                            </a>
+                        </li>
+                        <li>
+                            <a href="https://developer.mozilla.org/en-US/docs/Web/CSS" title="Mozilla developer network: CSS">
+                                CSS
+                            </a>
+                        </li>
+                        <li>
+                            <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript" title="Mozilla developer network: JS">
+                                JS
+                            </a>
+                            <ul>
+                                <li>
+                                    <a href="https://threejs.org/" title="THREEjs: library (WebGL / 3d)">
+                                        THREE js
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="https://vite.dev/" title="Vite: build tool for the web">
+                                        Vite
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+                <div class="col-md-4 col-sm-12">
+                    <h4>Download source files</h4>
+                    <a href="#" target="_blank">github repo link</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script type="module" src="./js/script.js"></script>
+</body>
+
+</html>

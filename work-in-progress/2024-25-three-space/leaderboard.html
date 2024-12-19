@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=\, initial-scale=1.0">
+    <title>6s Leaderboard</title>
+    <link rel="stylesheet" href="./css/grid.css">
+    <link rel="stylesheet" href="./css/style.css">
+
+    <!-- @TODO stijl -->
+    <style>
+        table {
+            cursor: default;
+            /*  
+                @TODO 1)
+                Maak de tabel 100% breed.
+
+                tabel {} noemen we een "selector" in CSS. In dit geval selecteren we hiermee de tabel.
+                wanneer je een selector moet aanvullen kun je hier aan denken; "selector { eigenschap: waarde; etc: etc; }".
+                Tussen de haakjes typen we welke eigenschappen we willen aanpassen.                
+                
+                In dit geval willen we de breedte aanpassen.
+                Gebruik de "width" eigenschap op de tabel en maak het 100% breed.
+            */
+            width: 100%;
+        }
+
+        tbody td {
+            text-align: center;
+            /*  
+                @TODO 2) 
+                Maak de tabel cellen 12.5% breed.
+                gebruik de "width" eigenschap zoals we ook voor de tabel gedaan hebben.
+            */
+            width: 12.5%;
+        }
+
+        tbody th {
+            /* 
+                @TODO 3)
+                Maak deze tabel header cellen 50% breed.
+                gebruik de "width" eigenschap zoals we ook voor de tabel gedaan hebben.
+            */
+            width: 50%;
+        }
+
+        td,
+        th {
+            padding: 0.4em 0.2em;
+        }
+
+        thead tr th {
+            background-color: #333;
+            color: #FFF;
+        }
+
+        tbody tr:nth-child(even) td,
+        tbody tr:nth-child(even) th {
+            background-color: #EFEFEF;
+        }
+
+        tbody tr:hover th,
+        tbody tr:hover td {
+            background-color: #FC0;
+        }
+
+
+        tbody tr:nth-child(5):hover th,
+        tbody tr:nth-child(5):hover td {
+            background-color: #BBB;
+        }
+
+        /* Target the first 5 rows for yellow hover */
+        tbody tr:nth-child(-n+3):hover td,
+        tbody tr:nth-child(-n+3):hover th {
+            background-color: gold;
+        }
+
+        /* Target rows 6 through 15 for silver hover */
+        tbody tr:nth-child(n+4):nth-child(-n+10):hover td,
+        tbody tr:nth-child(n+4):nth-child(-n+10):hover th {
+            background-color: silver;
+        }
+
+        /* Target rows 16 through 35 for bronze hover */
+        tbody tr:nth-child(n+11):nth-child(-n+20):hover td,
+        tbody tr:nth-child(n+11):nth-child(-n+20):hover th {
+            background-color: bisque;
+        }
+
+        /* Initialize a counter for the rows */
+        #leaderboard {
+            counter-reset: row-number;
+            /* Reset the counter */
+        }
+
+        /* Increment the counter on each row */
+        #leaderboard tr {
+            counter-increment: row-number;
+        }
+
+        /* Display the row number in the :before of the first th */
+        #leaderboard tr th:first-child {
+            position: relative;
+        }
+        #leaderboard tr th:first-child::before {
+            position: absolute;
+            left: 0;
+            content: counter(row-number) ") ";
+            font-weight: bold;
+            margin-left: 0.5em;
+        }
+    </style>
+</head>
+
+<body>
+
+    <header>
+        <nav>
+            <ul>
+                <li>
+                    <a href="index.html">
+                        <img src="img/6s-logo.webp" height="48" alt="6-sec-shooter" />
+                    </a>
+                </li>
+                <li>
+                    <ul>
+                        <li><a href="leaderboard.html" class="active">Leaderboard</a></li>
+                        <li><a href="about.html">About</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </nav>
+    </header>
+
+    <main class="banner">
+
+        <div class="container white-background">
+            <div class="row">
+                <!-- @TODO: waarde "center-text" aan class toevoegen -->
+                <div class="col-md-12 col-sm-12 center-text">
+                    <h1>🏆Leaderboard🏆</h1>
+                    <p>Welcome to the Six-second-shooter leaderboards, a list of legends!</p>
+                    <p>
+                        Score enough points to place in the top 20 and be displayed on the leaderboards.
+                        The leaderboards will reset occasionally.
+                    </p>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-12 col-sm-12">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Player</th>
+                                <th>👎</th>
+                                <th>👌</th>
+                                <th>🤺</th>
+                                <th>✨</th>
+                            </tr>
+                        </thead>
+                        <!-- @TODO Leaderboard in leaderboard.js -->
+                        <tbody id="leaderboard">
+                            <tr>
+                                <th>no players found</th>
+                                <td>-</td>
+                                <td>-</td>
+                                <td>-</td>
+                                <td>-</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <hr/>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-3 col-sm-12">
+                    <h3>👌 Hits</h3>
+                    <p>The number of targets you hit.</p>
+                </div>
+                <div class="col-md-3 col-sm-12">
+                    <h3>👎 Misses</h3>
+                    <p>The number of times you miss-clicked.</p>
+                </div>
+                <div class="col-md-3 col-sm-12">
+                    <h3>🤺 Accuracy rating</h3>
+                    <p>The percentage of hits out of your total of clicks.</p>
+                </div>
+                <div class="col-md-3 col-sm-12">
+                    <h3>✨ TotalScore</h3>
+                    <p>Total points based on your accuracy multiplier.</p>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-12 col-sm-12">
+                    <hr/>
+                    <!-- @TODO: center-text class toevoegen -->
+                    <h3 class="center-text">Is your name not on the list? No problem, just keep trying!</h3>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-12 col-sm-12">
+                    <!-- @TODO: center-text class toevoegen -->
+                    <p class="center-text">
+                        <!-- @TODO: .call-to-action knop opmaken -->
+                        <a href="index.html" class="call-to-action">Play the game</a>
+                    </p>
+                </div>
+            </div>
+        </div>
+
+    </main>
+
+    <footer>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4 col-sm-12">
+                    <h4>Made for</h4>
+                    <a href="https://www.mboutrecht.nl/" target="_blank">
+                        <img src="./img/logo-new@2x-bw.png" alt="MBO Utrecht logo" />
+                    </a>
+                </div>
+                <div class="col-md-4 col-sm-12">
+                    <h4>Made with</h4>
+                    <ul>
+                        <li>
+                            <a href="https://developer.mozilla.org/en-US/docs/Web/HTML" title="Mozilla developer network: HTML">
+                                HTML
+                            </a>
+                        </li>
+                        <li>
+                            <a href="https://developer.mozilla.org/en-US/docs/Web/CSS" title="Mozilla developer network: CSS">
+                                CSS
+                            </a>
+                        </li>
+                        <li>
+                            <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript" title="Mozilla developer network: JS">
+                                JS
+                            </a>
+                            <ul>
+                                <li>
+                                    <a href="https://threejs.org/" title="THREEjs: library (WebGL / 3d)">
+                                        THREE js
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="https://vite.dev/" title="Vite: build tool for the web">
+                                        Vite
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+                <div class="col-md-4 col-sm-12">
+                    <h4>Download source files</h4>
+                    <a href="#" target="_blank">github repo link</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script type="module" src="./js/leaderboard.js"></script>
+</body>
+
+</html>
